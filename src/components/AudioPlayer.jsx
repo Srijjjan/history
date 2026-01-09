@@ -28,7 +28,6 @@ const AudioPlayer = () => {
         });
       })
       .catch((err) => {
-        // Still blocked or failed attempt
         console.log("Audio play failed/blocked:", err.message);
       });
   }, []);
@@ -114,7 +113,7 @@ const AudioPlayer = () => {
   };
 
   return (
-    <div className="fixed bottom-8 right-8 z-100 flex flex-row-reverse items-center gap-4">
+    <div className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-100 flex flex-row-reverse items-center gap-3 md:gap-4 lg:gap-6">
       <audio
         ref={audioRef}
         src="/minimal piano textures - by Gunther Steudel [Pdsq8P0cAho].opus"
@@ -123,7 +122,7 @@ const AudioPlayer = () => {
 
       <button
         onClick={togglePlay}
-        className={`group relative flex h-14 w-14 items-center justify-center rounded-full transition-all duration-500 hover:scale-110 active:scale-90 shadow-2xl backdrop-blur-xl border
+        className={`group relative flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-full transition-all duration-500 hover:scale-110 active:scale-90 shadow-2xl backdrop-blur-xl border touch-none
           ${
             isBlocked && !isPlaying
               ? "animate-pulse bg-amber-900/20 border-amber-900/50 scale-105"
@@ -131,11 +130,11 @@ const AudioPlayer = () => {
           }
         `}
       >
-        <div className="flex items-center justify-center gap-[3px] h-6">
+        <div className="flex items-center justify-center gap-[2px] md:gap-[3px] h-5 md:h-6">
           {[1, 2, 3, 4, 5, 6].map((i) => (
             <div
               key={i}
-              className={`w-[3px] bg-amber-900 rounded-full transition-all duration-300 ${
+              className={`w-[2px] md:w-[3px] bg-amber-900 rounded-full transition-all duration-300 ${
                 isPlaying ? "animate-complex-music-bar" : "h-1 opacity-40"
               }`}
               style={{
@@ -152,9 +151,9 @@ const AudioPlayer = () => {
         />
       </button>
 
-      <div className="flex flex-col items-end gap-1">
+      <div className="flex flex-col items-end gap-0.5 md:gap-1">
         <span
-          className={`text-[10px] uppercase tracking-[0.3em] font-bold pointer-events-none select-none drop-shadow-sm transition-colors duration-500
+          className={`text-[8px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.3em] font-bold pointer-events-none select-none drop-shadow-sm transition-colors duration-500
           ${
             isBlocked && !isPlaying
               ? "text-amber-900 animate-bounce"
